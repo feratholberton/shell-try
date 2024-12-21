@@ -6,17 +6,28 @@ void execute_command(const char *command)
 
 	if (child_pid == -1)
 	{
-		perror("fork");
+		print_string("Error forking process.\n");
 		exit(EXIT_FAILURE);
 	}
 	else if (child_pid == 0)
 	{
-		execlp(command, command, (char *)NULL);
-		perror("execlp");
+		char *args[128];
+		int arg_count = 0;
+
+		char *token = strtok((char *)command, " ");
+		while (token != NULL)
+		{
+			args[arg_count++] = token;
+			token = strtok(NULL, " ");
+		}
+		args[arg_count] = NULL;
+		execvp(args[0], args);
+
+		print_string("Error executingn command.\n");
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		/* wait(NULL); */
+		wait(NULL);
 	}
 }

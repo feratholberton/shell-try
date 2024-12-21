@@ -1,7 +1,15 @@
 #include "shellowWorld.h"
 
-int main()
+int main(void)
 {
-	print_string("Printed with custom function\n");
+	char command[120];
+
+	while (true)
+	{
+		display_prompt();
+		read_command(command, sizeof(command));
+		execute_command(command);
+	}
+
 	return 0;
 }
