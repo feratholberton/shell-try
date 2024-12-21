@@ -9,8 +9,8 @@ int main()
 	process_id = getpid();
 	process_parent_id = getppid();
 
-	printf("Process Id: %u\n", process_id);
-	printf("Process Parent Id (This shell): %u\n", process_parent_id);
+	printf("👶 Process Id (Child - This \"Program\"): %u\n", process_id);
+	printf("👩 Parent Process Id (This shell session): %u\n", process_parent_id);
 
 	return 0;
 }
