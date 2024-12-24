@@ -1,6 +1,6 @@
 #include "repl.h"
 
-char *readLine(void)
+char *get_line(void)
 {
 	char *buffer;
 	size_t bufferSize;

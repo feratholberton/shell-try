@@ -8,7 +8,7 @@ int main()
 	
 	printBanner();
 
-	while ((line = readLine()))
+	while ((line = get_line()))
 	{		
 		printf("🤖 You typed: %s", line);
 	}

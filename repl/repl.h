@@ -7,6 +7,6 @@
 #include <sys/wait.h>
 
 void printBanner(void);
-char *readLine(void);
+char *get_line(void);
 
 #endif
