@@ -1,5 +1,5 @@
-#ifndef LA_FACIL_H
-#define LA_FACIL_H
+#ifndef EXEC_AS_FILE_H
+#define EXEC_AS_FILE_H
 
 #include <stdio.h>
 #include <stdlib.h>
