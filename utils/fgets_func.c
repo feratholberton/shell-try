@@ -1,21 +1,22 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main()
 {
 	int maxChars = 256;
 
-	/** Create space for a string of maxChars characters */
+	/** Create space for a string of 256 characters */
 	char input[maxChars];
 
-	while(1)
+	while(true)
 	{
 		/** Print the prompt */
-		printf("Enter: ");
+		printf("Type: ");
 
-		/** Get the user input and put it into the input var */
+		/** Get the user input and store it into the input var */
 		fgets(input, maxChars, stdin);
 
 		/** Print the input var */
-		printf("String: %s\n", input);
+		printf("You typed: %s\n", input);
 	}
 }
