@@ -1,18 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
 int main()
 {
-	int maxChars = 256;
+	int maxChars = 12;
 
-	/** Create space for a string of 256 characters */
+	/** Create space for a string of maxChars characters */
 	char input[maxChars];
 
 	/** Print the prompt */
-	printf("Type: ");
+	printf("Type something, I'll echo it: ");
 
-	/** Get the user input and store it into the input var */
+	/** Get the user input and store it in input var */
 	fgets(input, maxChars, stdin);
 
 	/** Print the input var */
