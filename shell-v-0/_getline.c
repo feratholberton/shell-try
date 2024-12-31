@@ -9,10 +9,16 @@ void _getline()
 	/** Get the user input and store it in input var */
 	currentSize = getline(&input, &size, stdin);
 
+	/* Remove newline */
+	input[strcspn(input, "\n")] = '\0';
+
 	/** Print the input var */
-	printf("You typed: %s", input);
+	printf("You typed: %s\n", input);
+
 	/** Print chars processed */
-	printf("%ld chars total including '\\n'\n", currentSize);
+	printf("%ld total chars including '\\n'\n", currentSize);
+
+	_strtok(input, " ");
 
 	free(input);
 }

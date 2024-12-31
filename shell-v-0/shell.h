@@ -8,5 +8,6 @@
 #include <stdbool.h>
 
 void _getline();
+void _strtok(char *, char *);
 
 #endif
