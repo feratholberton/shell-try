@@ -1,6 +1,9 @@
 #include "shell.h"
 
 int main(void) {
-	printf("This will be a very simple shell\n");
+	/** Print the prompt */
+	printf("Type, hit Enter and I'll get the line: ");
+
+	_getline();
 	return (EXIT_SUCCESS);
 }
