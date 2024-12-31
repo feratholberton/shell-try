@@ -14,5 +14,5 @@ void _strtok(char *string, char *delimeter)
 		token = strtok(NULL, delimeter);
 	}
 
-	printf("Extracted tokens %d\n", token_count);
+	printf("Extracted tokens: %d\n", token_count);
 }

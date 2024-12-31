@@ -1,9 +1,11 @@
 #include "shell.h"
 
 int main(void) {
-	/** Print the prompt */
-	printf("Type, hit Enter and I'll get the line: ");
-
-	_getline();
+	_printBanner();
+	while (true)
+	{
+		printf("I'll get the line you type and tokenize it: ");
+		_getline();
+	}
 	return (EXIT_SUCCESS);
 }

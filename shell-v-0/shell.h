@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+void _printBanner();
 void _getline();
 void _strtok(char *, char *);
 
