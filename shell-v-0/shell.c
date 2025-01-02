@@ -16,8 +16,10 @@ int main()
 		line = _getline();
 		if (line == NULL)
 			break;
+		/*
 		else
 			printf("You typed: %s\n", line);
+		*/
 
 		tokens = _strtok(line, " ", &token_count);
 		if (tokens == NULL || token_count == 0)
@@ -25,6 +27,7 @@ int main()
 			free(line);
 			continue;
 		}
+		/*
 		else
 		{
 			for (i = 0; i < token_count ; i++)
@@ -32,6 +35,7 @@ int main()
 				printf("Token position [%d]: %s\n", i, tokens[i]);
 			}	
 		}
+		*/
 		
 		_execve(tokens[0], tokens);
 
