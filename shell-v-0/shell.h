@@ -6,9 +6,11 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <sys/wait.h>
 
 void _printBanner();
-void _getline();
-void _strtok(char *, char *);
+char *_getline();
+char **_strtok(char *, char *, int *);
+void _execve(const char *, char **);
 
 #endif

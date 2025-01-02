@@ -1,18 +1,28 @@
 #include "shell.h"
 
-void _strtok(char *string, char *delimeter) 
+char **_strtok(char *string, char *delimeter, int *token_count) 
 {
 	char *tokens_str = strdup(string);
+	char **tokens = NULL;
 	char *token;
-	int token_count = 0;
+	char **new_tokens;
+	int count = 0;
 
 	token = strtok(tokens_str, delimeter);
 
 	while (token != NULL)
 	{
-		printf("Token position [%d] => %s\n", token_count++, token);
+		new_tokens = realloc(tokens, (count + 1) * sizeof(char *));
+		tokens = new_tokens;
+		tokens[count++] = strdup(token);
+
 		token = strtok(NULL, delimeter);
 	}
 
-	printf("Extracted tokens: %d\n", token_count);
+	if (token_count)
+	{
+		*token_count = count;
+	}
+
+	return tokens;
 }

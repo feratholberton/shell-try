@@ -1,10 +1,10 @@
 #include "shell.h"
 
-void _getline()
+char *_getline()
 {
 	/** If *lineptr => (input) is set to NULL before the call, then getline() will allocate a buffer for storing the line. This buffer should be freed by the user program even if getline() failed. */
 	char *input = NULL;
-	size_t size, currentSize;
+	size_t size = 0, currentSize;
 
 	/** Get the user input and store it in input var */
 	currentSize = getline(&input, &size, stdin);
@@ -18,8 +18,5 @@ void _getline()
 	/** Print chars processed */
 	printf("%ld total chars including '\\n'\n", currentSize);
 
-	/** Tokenize input */
-	_strtok(input, " ");
-
-	free(input);
+	return input;
 }
