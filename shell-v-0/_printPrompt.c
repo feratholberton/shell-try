@@ -2,5 +2,5 @@
 
 void _printPrompt()
 {
-	printf("Hi!> ");
+	printf("🤖 Type something human: ");
 }

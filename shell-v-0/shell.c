@@ -6,7 +6,6 @@ int main()
 	char **tokens;
 	int token_count = 0;
 	int i;
-	char *path_env;
 
 	_printBanner();
 
@@ -23,8 +22,7 @@ int main()
 			printf("Token position [%d]: %s\n", i, tokens[i]);
 		}
 		
-		path_env = _getEnvironmentPath();
-		printf("Enviroment PATH: %s\n", path_env);
+		_execve(tokens[0], tokens);
 	}
 
 	return (EXIT_SUCCESS);
