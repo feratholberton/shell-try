@@ -4,7 +4,8 @@ char *_getline()
 {
 	/** If *lineptr => (input) is set to NULL before the call, then getline() will allocate a buffer for storing the line. This buffer should be freed by the user program even if getline() failed. */
 	char *input = NULL;
-	size_t size = 0, currentSize;
+	size_t size = 0;
+	size_t currentSize;
 
 	/** Get the user input and store it in input var */
 	currentSize = getline(&input, &size, stdin);

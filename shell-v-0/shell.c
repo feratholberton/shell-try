@@ -1,17 +1,30 @@
 #include "shell.h"
 
-int main(void) {
-	int token_count = 0;
+int main() 
+{
 	char *line;
 	char **tokens;
+	int token_count = 0;
+	int i;
+	char *path_env;
+
 	_printBanner();
 
 	while (true)
 	{
-		printf("I'll get the line you type and tokenize it: ");
+		_printPrompt();
+
 		line = _getline();
+		printf("You typed: %s\n", line);
+
 		tokens = _strtok(line, " ", &token_count);
-		_execve(tokens[0], tokens);
+		for (i = 0; i < token_count ; i++)
+		{
+			printf("Token position [%d]: %s\n", i, tokens[i]);
+		}
+		
+		path_env = _getEnvironmentPath();
+		printf("Enviroment PATH: %s\n", path_env);
 	}
 
 	return (EXIT_SUCCESS);

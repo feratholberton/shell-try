@@ -9,8 +9,9 @@
 #include <sys/wait.h>
 
 void _printBanner();
+void _printPrompt();
 char *_getline();
 char **_strtok(char *, char *, int *);
-void _execve(const char *, char **);
-
+char *_getenv(const char *);
+char *_getEnvironmentPath();
 #endif
