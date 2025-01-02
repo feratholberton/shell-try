@@ -13,6 +13,14 @@ char **_strtok(char *string, char *delimeter, int *token_count)
 	while (token != NULL)
 	{
 		new_tokens = realloc(tokens, (count + 1) * sizeof(char *));
+		if (new_tokens == NULL)
+		{
+			perror("realloc() FAILED");
+			free(tokens);
+			free(tokens_str);
+			return NULL;
+		}
+
 		tokens = new_tokens;
 		tokens[count++] = strdup(token);
 
