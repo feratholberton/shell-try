@@ -14,15 +14,34 @@ int main()
 		_printPrompt();
 
 		line = _getline();
-		printf("You typed: %s\n", line);
+		if (line == NULL)
+			break;
+		else
+			printf("You typed: %s\n", line);
 
 		tokens = _strtok(line, " ", &token_count);
-		for (i = 0; i < token_count ; i++)
+		if (tokens == NULL || token_count == 0)
 		{
-			printf("Token position [%d]: %s\n", i, tokens[i]);
+			free(line);
+			continue;
+		}
+		else
+		{
+			for (i = 0; i < token_count ; i++)
+			{
+				printf("Token position [%d]: %s\n", i, tokens[i]);
+			}	
 		}
 		
 		_execve(tokens[0], tokens);
+
+		free(line);
+
+		for (i = 0; i < token_count; i++)
+		{
+			free(tokens[i]);
+		}
+		free(tokens);
 	}
 
 	return (EXIT_SUCCESS);
