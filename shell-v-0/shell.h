@@ -13,7 +13,7 @@ void _printPrompt();
 char *_getline();
 char **_strtok(char *, char *, int *);
 void _execve(char *, char **);
-char *_getEnvironPath();
 char *_searchPath(const char *);
+char *_getEnvironPath();
 
 #endif

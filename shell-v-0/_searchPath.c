@@ -7,14 +7,28 @@ char *_searchPath(const char *command)
 	char *token;
 	size_t length;
 	char *full_path;
-	
+
 	if (command == NULL)
+	{
 		return NULL;
+	}
+
+	if (strchr(command, '/') != NULL)
+	{
+		if (access(command, X_OK) == 0)
+		{
+			return strdup(command);
+		}
+		else
+		{
+			return NULL;
+		}
+	}
 
 	path_env = _getEnvironPath();
 	if (path_env == NULL)
 	{
-		fprintf(stderr, "Error: Path not found");
+		fprintf(stderr, "Error: PATH environment variable not found.\n");
 		return NULL;
 	}
 
@@ -37,7 +51,7 @@ char *_searchPath(const char *command)
 			return NULL;
 		}
 
-		snprintf(full_path, length, "%s%s", token, command);
+		snprintf(full_path, length, "%s/%s", token, command);
 
 		if (access(full_path, X_OK) == 0)
 		{
