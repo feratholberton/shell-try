@@ -15,5 +15,6 @@ char **_strtok(char *, char *, int *);
 void _execve(char *, char **);
 char *_searchPath(const char *);
 char *_getEnvironPath();
+void _free_tokens(char **tokens, int count);
 
 #endif
