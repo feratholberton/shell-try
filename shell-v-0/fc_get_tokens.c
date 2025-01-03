@@ -11,7 +11,6 @@ char **get_tokens(char *string, char *delimeter, int *token_count)
 
 	if (tokens_str == NULL)
 	{
-		perror("strdup() FAILED");
 		return NULL;
 	}
 
@@ -22,7 +21,6 @@ char **get_tokens(char *string, char *delimeter, int *token_count)
 		new_tokens = realloc(tokens, (count + 1) * sizeof(char *));
 		if (new_tokens == NULL)
 		{
-			perror("realloc() FAILED");
 			free(tokens_str);
 
 			for (i = 0; i < count; i++)
@@ -38,8 +36,6 @@ char **get_tokens(char *string, char *delimeter, int *token_count)
 		tokens[count] = strdup(token);
 		if (tokens[count] == NULL)
 		{
-			perror("strdup() FAILED");
-
 			free(tokens_str);
 
 			for (i = 0; i < count; i++)

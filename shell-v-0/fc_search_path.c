@@ -28,14 +28,12 @@ char *search_path(const char *command)
 	path_env = get_environ_path();
 	if (path_env == NULL)
 	{
-		fprintf(stderr, "Error: PATH environment variable not found.\n");
 		return NULL;
 	}
 
 	path_copy = strdup(path_env);
 	if (path_copy == NULL)
 	{
-		perror("strdup() FAILED");
 		return NULL;
 	}
 
@@ -46,7 +44,6 @@ char *search_path(const char *command)
 		full_path = malloc(length);
 		if (full_path == NULL)
 		{
-			perror("malloc() FAILED");
 			free(path_copy);
 			return NULL;
 		}

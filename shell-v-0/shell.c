@@ -25,7 +25,7 @@ int main()
 		tokens = get_tokens(line, " ", &token_count);
 		if (tokens == NULL || token_count == 0)
 		{
-			fprintf(stderr, "Error: Invalid input\n");
+			printf("Error: Failed to parse input.\n");
 			free(line);
 			continue;
 		}
@@ -39,7 +39,7 @@ int main()
 		
 		if (execute(tokens[0], tokens) == -1)
 		{
-			fprintf(stderr, "%s: Command not found\n", tokens[0]);
+			printf("\"%s\": Command not found 🤔\n", tokens[0]);
 		}
 
 		free(line);
