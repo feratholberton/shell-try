@@ -5,11 +5,13 @@ char *search_path(const char *command)
 	const char *path_env;
 	char *path_copy;
 	char *token;
+	char *save_ptr;
 	size_t length;
 	char *full_path;
 
 	if (command == NULL)
 	{
+		fprintf(stderr, "search_path: Null command provided\n");
 		return NULL;
 	}
 
@@ -21,6 +23,7 @@ char *search_path(const char *command)
 		}
 		else
 		{
+			fprintf(stderr, "search_path: Command '%s' is not executable\n", command);
 			return NULL;
 		}
 	}
@@ -28,22 +31,24 @@ char *search_path(const char *command)
 	path_env = get_environ_path();
 	if (path_env == NULL)
 	{
-		return NULL;
+		path_env = "/usr/bin:/bin";
 	}
 
 	path_copy = strdup(path_env);
 	if (path_copy == NULL)
 	{
+		perror("strdup() FAILED");
 		return NULL;
 	}
 
-	token = strtok(path_copy, ":");
+	token = strtok_r(path_copy, ":", &save_ptr);
 	while (token != NULL)
 	{
 		length = strlen(token) + strlen(command) + 2;
 		full_path = malloc(length);
 		if (full_path == NULL)
 		{
+			perror("malloc() FAILED");
 			free(path_copy);
 			return NULL;
 		}
@@ -57,7 +62,7 @@ char *search_path(const char *command)
 		}
 
 		free(full_path);
-		token = strtok(NULL, ":");
+		token = strtok_r(NULL, ":", &save_ptr);
 	}
 
 	free(path_copy);
