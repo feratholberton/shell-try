@@ -25,6 +25,7 @@ int main()
 		tokens = _strtok(line, " ", &token_count);
 		if (tokens == NULL || token_count == 0)
 		{
+			fprintf(stderr, "Error: Invalid input\n");
 			free(line);
 			continue;
 		}
@@ -36,7 +37,10 @@ int main()
 			break;
 		}
 		
-		_execve(tokens[0], tokens);
+		if (_execve(tokens[0], tokens) == -1)
+		{
+			fprintf(stderr, "%s: Command not found\n", tokens[0]);
+		}
 
 		free(line);
 		_free_tokens(tokens, token_count);

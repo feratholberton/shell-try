@@ -1,6 +1,6 @@
 #include "shell.h"
 
-void _execve(char *command, char **arguments)
+int _execve(char *command, char **arguments)
 {
 	pid_t pid = fork();
 	char *full_path;
@@ -8,21 +8,21 @@ void _execve(char *command, char **arguments)
 	if (command == NULL || arguments == NULL)
 	{
 		fprintf(stderr, "Error: Invalid command or arguments.\n");
-		return;
+		return -1;
 	}
 
 	full_path = _searchPath(command);
 	if (full_path == NULL)
 	{
 		fprintf(stderr, "%s: Command not found\n", command);
-		return;
+		return -1;
 	}
 
 	if (pid == -1)
 	{
 		perror("fork() FAILED");
 		free(full_path);
-		return;
+		return -1;
 	}
 
 	if (pid == 0)
@@ -39,8 +39,11 @@ void _execve(char *command, char **arguments)
 		if (waitpid(pid, NULL, 0) == -1)
 		{
 			perror("waitpid() FAILED");
+			free(full_path);
+			return -1;
 		}
 	}
 
 	free(full_path);
+	return 0;
 }
