@@ -1,6 +1,6 @@
 #include "shell.h"
 
-void _printPrompt()
+void print_prompt()
 {
 	printf("🤖 Type something human: ");
 }

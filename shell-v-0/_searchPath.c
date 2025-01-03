@@ -1,6 +1,6 @@
 #include "shell.h"
 
-char *_searchPath(const char *command)
+char *search_path(const char *command)
 {
 	const char *path_env;
 	char *path_copy;
@@ -25,7 +25,7 @@ char *_searchPath(const char *command)
 		}
 	}
 
-	path_env = _getEnvironPath();
+	path_env = get_environ_path();
 	if (path_env == NULL)
 	{
 		fprintf(stderr, "Error: PATH environment variable not found.\n");

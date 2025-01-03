@@ -3,7 +3,7 @@
 extern char **environ;
 int i;
 
-char *_getEnvironPath()
+char *get_environ_path()
 {
 	for (i = 0; environ[i] != NULL; i++)
 	{

@@ -1,6 +1,6 @@
 #include "shell.h"
 
-void _free_tokens(char **tokens, int count)
+void free_tokens(char **tokens, int count)
 {
 	int i;
 

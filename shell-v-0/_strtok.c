@@ -1,6 +1,6 @@
 #include "shell.h"
 
-char **_strtok(char *string, char *delimeter, int *token_count)
+char **get_tokens(char *string, char *delimeter, int *token_count)
 {
 	char *tokens_str = strdup(string);
 	char **tokens = NULL;

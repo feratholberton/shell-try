@@ -1,6 +1,6 @@
 #include "shell.h"
 
-void _printBanner()
+void print_banner()
 {
 	printf("      _    _      _ _      __          __        _     _ \n");
 	printf("     | |  | |    | | |     \\ \\        / /       | |   | |\n");

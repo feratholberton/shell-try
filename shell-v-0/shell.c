@@ -6,13 +6,13 @@ int main()
 	char **tokens;
 	int token_count = 0;
 
-	_printBanner();
+	print_banner();
 
 	while (true)
 	{
-		_printPrompt();
+		print_prompt();
 
-		line = _getline();
+		line = get_line();
 		if (line == NULL)
 			break;
 
@@ -22,7 +22,7 @@ int main()
 			continue;
 		}
 
-		tokens = _strtok(line, " ", &token_count);
+		tokens = get_tokens(line, " ", &token_count);
 		if (tokens == NULL || token_count == 0)
 		{
 			fprintf(stderr, "Error: Invalid input\n");
@@ -33,17 +33,17 @@ int main()
 		if (strcmp(tokens[0], "exit") == 0)
 		{
 			free(line);
-			_free_tokens(tokens, token_count);
+			free_tokens(tokens, token_count);
 			break;
 		}
 		
-		if (_execve(tokens[0], tokens) == -1)
+		if (execute(tokens[0], tokens) == -1)
 		{
 			fprintf(stderr, "%s: Command not found\n", tokens[0]);
 		}
 
 		free(line);
-		_free_tokens(tokens, token_count);
+		free_tokens(tokens, token_count);
 	}
 
 	return (EXIT_SUCCESS);

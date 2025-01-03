@@ -1,6 +1,6 @@
 #include "shell.h"
 
-char *_getline()
+char *get_line()
 {
 	/** If *lineptr => (input) is set to NULL before the call, then getline() will allocate a buffer for storing the line. This buffer should be freed by the user program even if getline() failed. */
 	char *input = NULL;

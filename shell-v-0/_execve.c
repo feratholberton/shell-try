@@ -1,6 +1,6 @@
 #include "shell.h"
 
-int _execve(char *command, char **arguments)
+int execute(char *command, char **arguments)
 {
 	pid_t pid = fork();
 	char *full_path;
@@ -11,7 +11,7 @@ int _execve(char *command, char **arguments)
 		return -1;
 	}
 
-	full_path = _searchPath(command);
+	full_path = search_path(command);
 	if (full_path == NULL)
 	{
 		fprintf(stderr, "%s: Command not found\n", command);
