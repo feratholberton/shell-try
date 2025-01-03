@@ -12,7 +12,8 @@ void _printBanner();
 void _printPrompt();
 char *_getline();
 char **_strtok(char *, char *, int *);
-char *_getEnvironPath();
 void _execve(char *, char **);
+char *_getEnvironPath();
+char *_searchPath(const char *);
 
 #endif

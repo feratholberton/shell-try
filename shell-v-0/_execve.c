@@ -3,6 +3,7 @@
 void _execve(char *command, char **arguments)
 {
 	pid_t pid = fork();
+	char *full_path;
 
 	if (command == NULL || arguments == NULL)
 	{
@@ -10,18 +11,26 @@ void _execve(char *command, char **arguments)
 		return;
 	}
 
-	if (pid == -1)
+	full_path = _searchPath(command);
+	if (full_path == NULL)
 	{
-		perror("fork() FAILED");
+		fprintf(stderr, "%s: Command not found\n", command);
 		return;
 	}
 
+	if (pid == -1)
+	{
+		perror("fork() FAILED");
+		free(full_path);
+		return;
+	}
 
 	if (pid == 0)
 	{
-		if (execve(command, arguments, NULL) == -1)
+		if (execve(full_path, arguments, NULL) == -1)
 		{
 			perror("execve() FAILED");
+			free(full_path);
 			exit(EXIT_FAILURE);
 		}
 	}
@@ -32,4 +41,6 @@ void _execve(char *command, char **arguments)
 			perror("waitpid() FAILED");
 		}
 	}
+
+	free(full_path);
 }
