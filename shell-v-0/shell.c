@@ -16,11 +16,24 @@ int main()
 		if (line == NULL)
 			break;
 
+		if (strlen(line) == 0)
+		{
+			free(line);
+			continue;
+		}
+
 		tokens = _strtok(line, " ", &token_count);
 		if (tokens == NULL || token_count == 0)
 		{
 			free(line);
 			continue;
+		}
+
+		if (strcmp(tokens[0], "exit") == 0)
+		{
+			free(line);
+			_free_tokens(tokens, token_count);
+			break;
 		}
 		
 		_execve(tokens[0], tokens);
