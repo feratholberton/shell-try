@@ -1,23 +1,16 @@
-#include <stdio.h>
-
-extern char **environ;
+#include "shelloworld.h"
 
 int main (int argc, char *argv[])
 {
 	int i;
+	char *environ_path;
+	char *line;
 
-	printf("Program name: %s\n", argv[0]);
-	printf("Number of arguments: %d\n", argc);
+	environ_path = get_environ_path();
 
-	for (i = 1; i < argc; i++)
-	{
-		printf("Arguments %d: %s\n", i, argv[i]);
-	}
+	line = get_line();
 
-	for (i = 0; environ[i] != NULL; i++)
-	{
-		printf("%s\n", environ[i]);
-	}
+	printf("You entered: %s\n", line);
 
 	return 0;
 }
