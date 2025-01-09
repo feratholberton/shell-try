@@ -1,5 +1,40 @@
 #include "shelloworld.h"
 
+char *remove_new_line(char *line, ssize_t chars_read);
+char *remove_tabs(char *line);
+char *remove_multiple_spaces(char *line);
+
+char *get_line()
+{
+	char *line = NULL;
+	size_t length = 0;
+	ssize_t chars_read;
+
+	printf("Type: ");
+
+	chars_read = getline(&line, &length, stdin);
+
+	if (chars_read == 1)
+	{
+		free(line);
+		return NULL;
+	}
+
+	if (chars_read == -1)
+	{
+		free(line);
+		return NULL;
+	}
+
+	line = remove_new_line(line, chars_read);
+
+	line = remove_tabs(line);
+
+	line = remove_multiple_spaces(line);
+
+	return line;
+}
+
 char *remove_new_line(char *line, ssize_t chars_read)
 {
 	if (line[chars_read - 1] == '\n')
@@ -45,36 +80,4 @@ char *remove_multiple_spaces(char *line)
 
 	line[j] = '\0';
 	return line;
-}
-
-char *get_line()
-{
-	char *line = NULL;
-	char *clean_line;
-	size_t length = 0;
-	ssize_t chars_read;
-
-	printf("Type: ");
-
-	chars_read = getline(&line, &length, stdin);
-
-	if (chars_read == 1)
-	{
-		free(line);
-		return NULL;
-	}
-
-	if (chars_read == -1)
-	{
-		free(line);
-		return NULL;
-	}
-
-	clean_line = remove_new_line(line, chars_read);
-
-	clean_line = remove_tabs(clean_line);
-
-	clean_line = remove_multiple_spaces(clean_line);
-
-	return clean_line;
 }
