@@ -2,5 +2,5 @@
 
 void print_prompt()
 {
-	printf("🤖 Type something human: ");
+	printf("\033[33m🤖 Type something human: \033[0m");
 }

@@ -12,5 +12,6 @@ char *get_environ_path()
 			return environ[i] + 5;
 		}
 	}
+	
 	return NULL;
 }
